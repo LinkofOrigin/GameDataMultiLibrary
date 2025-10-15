@@ -3,6 +3,14 @@
 ##########
 GameDataMultiLibrary.code-workspace
 
+
+###############
+# Environment #
+###############
+*.env
+*.dev.env
+
+
 ################
 # GitHub Pages #
 ################
