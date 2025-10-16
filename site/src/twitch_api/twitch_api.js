@@ -1,6 +1,9 @@
 const TWITCH_API_ROOT = "https://id.twitch.tv/";
 const TWITCH_API_OAUTH_TOKEN = "oauth2/token";
 
+
+console.log("twitch oauth class loaded");
+
 export default class TwitchAPI {
     
     oauth_token_url = TWITCH_API_ROOT + TWITCH_API_OAUTH_TOKEN;

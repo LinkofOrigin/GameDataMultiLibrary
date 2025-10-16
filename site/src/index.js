@@ -10,7 +10,14 @@
 
 export default {
 	async fetch(request, env, ctx) {
-		console.log("Root loads");
-		return new Response('Hello Source!');
+		const url = new URL(request.url);
+		switch (url.pathname) {
+			case '/message':
+				return new Response('Hello, Worker!');
+			case '/random':
+				return new Response(crypto.randomUUID());
+			default:
+				return new Response('Not Found', { status: 404 });
+		}
 	},
 };

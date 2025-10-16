@@ -1,0 +1,12 @@
+// Sample docs: https://developers.cloudflare.com/workers/wrangler/configuration/#sample-wrangler-configuration
+
+// Workers recommended over Pages: https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/
+
+{
+    "name": "vgd-multi-library",
+    "keep_vars": true
+    // "route": {
+    //     "pattern": "vgd-multi-library.unguidedgames.com/*",
+    //     "zone_name": "vgd-multi-library.unguidedgames.com"
+    // },
+}
