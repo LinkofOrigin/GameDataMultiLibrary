@@ -3,13 +3,37 @@
 <head>
 	<title>VGD Multi Library</title>
 	<meta charset="utf-8" />
+    <style src="./styles.css"></style>
 </head>
 
 <body>
-    <h1>Welcome to the VGD Multi Library</h1>
-    <a href="./oauth/initiate_twitch_oauth.html">Start Twitch OAuth</button>
+    <h1>Welcome to the VGD Multi Library!</h1>
+    <button id="refreshData">REFRESH</button>
+    <section>
+        <h2>Genres</h2>
+    </section>
+    
+    <section>
+        <h2>Part 2</h2>
+    </section>
+    
+    <section>
+        <h2>Part 3</h2>
+    </section>
 </body>
 
-<script>console.log("This page loaded")</script>
+<script type="module">
+    import getGameData from "./gameData/gameData.js";
+    
+    async function loadGameData() {
+        console.log("Loading game data!");
+        let gameData = await getGameData();
+        console.log("Received game data!");
+    }
+    
+    document.getElementById("refreshData").addEventListener("click", loadGameData);
+    
+    loadGameData();
+</script>
 
 </html>

@@ -7,6 +7,12 @@
 	"name": "vgd-multi-library",
 	"main": "src/index.js",
 	"compatibility_date": "2025-10-11",
+	"kv_namespaces": [
+		{
+		"binding": "IGDB",
+		"id": "7e99f94a3ccb455796f2782f38fa19a1"
+		}
+	],
 	"compatibility_flags": [
 		"nodejs_compat",
 		"global_fetch_strictly_public"
@@ -17,7 +23,7 @@
 	},
 	"observability": {
 		"enabled": true
-	}
+	},
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
