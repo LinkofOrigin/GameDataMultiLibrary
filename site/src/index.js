@@ -11,6 +11,6 @@
 export default {
 	async fetch(request, env, ctx) {
 		console.log("Root loads");
-		return new Response('Hello Worker!');
+		return new Response('Hello Source!');
 	},
 };
