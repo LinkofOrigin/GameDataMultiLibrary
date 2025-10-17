@@ -1,4 +1,80 @@
-section {
-    max-width: 25%;
-    margin: 0 1rem;
+body {
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #717171;
+}
+
+.pageContent {
+    max-width: 1080px;
+    min-height: 100%;
+    margin: 0 auto;
+    background-color: #d3d3d3;
+}
+
+.pageContent h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.pageContent .description {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin: 0 10%;
+}
+
+.pageContent p {
+    flex: 1 1 auto;
+    text-align: justify;
+}
+
+.pageContent .buttonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem auto;
+}
+
+.buttonContainer button {
+    font-size: 18px;
+}
+
+.sectionContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.sectionContainer section {
+    color: black;
+    padding: 0 1rem;
+}
+
+.sectionContainer section h2 {
+    text-align: center;
+    margin-bottom: 2px;
+}
+
+.sectionContainer section p {
+    min-height: 3rem;
+    padding: 0 2rem;
+    font-size: 14px;
+    text-align: justify;
+}
+
+.sectionContainer section hr {
+    margin: 0 15%;
+    height: 4px;
+    color: rgb(23, 80, 150);
+    background-color: rgb(23, 80, 150);
+    border-color: rgb(23, 80, 150);
+    border-radius: 3px;
+    border-width: 1px;
+}
+
+.sectionContainer section pre {
+    min-width: 100%;
+    text-wrap: balance;
+    inline-size: min-content;
 }

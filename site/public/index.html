@@ -1,25 +1,48 @@
 <html>
-	
+
 <head>
 	<title>VGD Multi Library</title>
 	<meta charset="utf-8" />
-    <style src="./styles.css"></style>
+    <link rel="stylesheet" href="./styles.css"></style>
+    <script src="./components/vgdComponent.js"></script>
 </head>
 
 <body>
-    <h1>Welcome to the VGD Multi Library!</h1>
-    <button id="refreshData">REFRESH</button>
-    <section>
-        <h2>Genres</h2>
-    </section>
-    
-    <section>
-        <h2>Part 2</h2>
-    </section>
-    
-    <section>
-        <h2>Part 3</h2>
-    </section>
+    <div class="pageContent">
+        <h1>Welcome to the VGD Multi Library!</h1>
+        
+        <div class="description">
+            <p>This page is intended to show an example of retrieving data from the IGDB API. Click the button below to request a fresh batch of data from the backend.</p>
+            <p>See the GitHub repository for various language implentations of an IGDB library: <a href="https://github.com/LinkofOrigin/GameDataMultiLibrary/tree/release">IGDB Multi Library</a></p>
+        </div>
+        
+        <span class="buttonContainer">
+            <button id="refreshData">Reload Data</button>
+        </span>
+        
+        <div id="sectionContainer" class="sectionContainer">
+            <section id="primaryDataContainer">
+                <h2 name="title">LOADING...</h2>
+                <p name="summary"></p>
+                <hr>
+                <pre name="data"></pre>
+            </section>
+            
+            <section id="secondaryDataContainer">
+                <h2 name="title">LOADING...</h2>
+                <p name="summary"></p>
+                <hr>
+                <pre name="data"></pre>
+            </section>
+            
+            <section id="tertiaryDataContainer">
+                <h2 name="title">LOADING...</h2>
+                <p name="summary"></p>
+                <hr>
+                <pre name="data"></pre>
+            </section>
+        </div>
+    </div>
 </body>
 
 <script type="module">
