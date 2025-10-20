@@ -1,0 +1,15 @@
+{
+  "name": "igdb-js",
+  "version": "0.0.1",
+  "description": "A JavaScript library for interacting with IGDB - a database of video game data.",
+  "license": "MIT",
+  "author": "JesseRupe",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "apicalypse": "^1.0.5"
+  }
+}

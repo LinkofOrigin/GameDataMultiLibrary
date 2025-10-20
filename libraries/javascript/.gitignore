@@ -1,0 +1,5 @@
+# Ignore Node installs
+node_modules/
+
+# Ignore secrets files
+*secrets*
