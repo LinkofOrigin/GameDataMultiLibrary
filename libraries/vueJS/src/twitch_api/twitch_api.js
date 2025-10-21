@@ -1,3 +1,4 @@
+import axios from "axios";
 const TWITCH_API_ROOT = "https://id.twitch.tv/";
 const TWITCH_API_OAUTH_TOKEN = "oauth2/token";
 const TWITCH_API_OAUTH_VALIDATE = "oauth2/validate";
@@ -18,14 +19,15 @@ export default class TwitchAPI {
         const fullTokenUrl = this.oauthTokenURL + "?" + queryParamsString;
 
         const requestData = {
-            method: "POST",
+            method: "post",
+            url: fullTokenUrl,
             headers: {
                 "Content-Type": "application/json; charset=UTF-8"
             }
         };
 
         console.log("Attempting request to acquire Twitch Access Token.")
-        const result = await fetch(fullTokenUrl, requestData);
+        let result = await axios(requestData);
 
         if (!result.ok) {
             console.error("Unexpected token response: " + JSON.stringify(await result.json()));
@@ -41,13 +43,14 @@ export default class TwitchAPI {
         const fullValidateUrl = this.oauthValidateURL;
         console.log("Validate URL: " + fullValidateUrl);
         const requestData = {
-            method: "GET",
+            method: "get",
+            url: fullValidateUrl,
             headers: {
                 "Authorization": `OAuth ${token}`
             }
         };
 
-        let result = await fetch(fullValidateUrl, requestData);
+        let result = await axios(requestData);
         // 401 status means the token was invalid, which is a "valid" state for this call.
         // Anything otherwise is unexpected though.
         if (!(result.ok || result.status == 401)) {

@@ -29,5 +29,6 @@ coverage
 
 *.tsbuildinfo
 
-# Hide secret files
-*secrets*
+# Hide environment data
+*.env
+*.env.local

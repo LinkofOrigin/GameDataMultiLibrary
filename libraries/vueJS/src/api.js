@@ -3,9 +3,12 @@ import IGDB_Helper from "./igdb_api/IGDB_Helper.js";
 
 export function getCredentials() {
     console.log("Retrieving client ID and client secret");
-    const secrets = fs.readFileSync("./secrets.json");
-    const secretsJSON = JSON.parse(secrets);
-    return secretsJSON;
+    console.log(`process: ${JSON.stringify(process)}`);
+    const credentials = {
+        clientId: process.env.VITE_CLIENT_ID,
+        clientSecret: process.env.VITE_CLIENT_SECRET
+    };
+    return credentials;
 }
 
 export async function getAPIToken(clientId, clientSecret) {
@@ -14,7 +17,6 @@ export async function getAPIToken(clientId, clientSecret) {
     const apiTokenResult = await twichApi.requestOauthToken(clientId, clientSecret);
     return apiTokenResult.access_token;
 }
-
 
 export async function getGenreData(clientId, apiToken) {
     console.log("Pulling game data from IGDB");

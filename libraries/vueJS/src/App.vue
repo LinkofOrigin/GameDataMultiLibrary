@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted, ref } from 'vue';
 import DataPreview from './components/DataPreview.vue';
 import { getCredentials, getAPIToken, getGenreData, getGameData, getCharacterData } from './api';
 
@@ -20,29 +21,28 @@ let sectionThree = ref({
   data: null
 });
 
-const credentials = getCredentials();
+let credentials = ref({
+  clientId: null,
+  clientSecret: null,
+});
+let apiToken = ref("");
 
-const clientId = credentials.clientId;
-const clientSecret = credentials.clientSecret;
-
-const apiToken = getAPIToken(clientId, clientSecret);
-
-sectionOne.data = getGenreData(clientId, apiToken);
-sectionTwo.data = getGameData(clientId, apiToken);
-sectionThree.data = getCharacterData(clientId, apiToken);
+onMounted(() => {
+  credentials.value = getCredentials();
+  console.log("credentials: " + JSON.stringify(credentials.value));
+  apiToken.value = getAPIToken(credentials.value.clientId, credentials.value.clientSecret);
+  sectionOne.value.data = getGenreData(credentials.clientId, apiToken);
+  sectionTwo.value.data = getGameData(credentials.clientId, apiToken);
+  sectionThree.value.data = getCharacterData(credentials.clientId, apiToken);
+})
 
 
 function refreshData() {
-  
+  sectionThree.value.data = getCharacterData(credentials.credentials.clientId);
 }
-
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-  </header>
-
   <main>
     <div class="pageContent">
       <h1>Welcome to the VGD Multi Library!</h1>
@@ -54,7 +54,7 @@ function refreshData() {
       </div>
 
       <span class="buttonContainer">
-        <button id="refreshData">Reload Data</button>
+        <button id="refreshData" @click="refreshData">Reload Data</button>
       </span>
 
       <div id="sectionContainer" class="sectionContainer">
@@ -101,8 +101,8 @@ body {
 }
 
 .pageContent {
-  max-width: 1080px;
-  min-height: 100%;
+  min-width: 100%;
+  min-height: 100vh;
   margin: 0 auto;
   background-color: #d3d3d3;
 }
@@ -121,7 +121,8 @@ body {
 
 .pageContent p {
   flex: 1 1 auto;
-  text-align: justify;
+  color: black;
+  text-align: center;
 }
 
 .pageContent .buttonContainer {

@@ -5,9 +5,8 @@ body {
 }
 
 .pageContent {
-    max-width: 1080px;
+    min-width: 100%;
     min-height: 100%;
-    margin: 0 auto;
     background-color: #d3d3d3;
 }
 
