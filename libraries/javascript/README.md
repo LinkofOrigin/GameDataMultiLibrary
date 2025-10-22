@@ -2,29 +2,39 @@
 
 A JavaScript library for interacting with IGDB - a database of video game data. This implementation utilizes the Apicalypse module provided by IGDB to assist with request building.
 
-## Testing Setup
+## Usage
 
-You can test the library out-of-the-box with some simple setup.
+First you will need to acquire credentials from the Twitch API in order to call IGDB. Once you have a valid API token, you can call IGDB for data.
 
-1. Install the latest stable versions of Node and NPM.
-2. Clone/Download the project.
-3. From the root directory of the library, run `npm install`.
-4. Store client credentials (details below).
-5. From the project directory, run `node app.js`.
-6. Observe output data.
+1. Instantiate an instance of IGDB_Helper.
+2. Call `createRequest(CLIENT_ID, API_TOKEN)` with your appropriate credentials for accessing the API
+3. Chain any desired filters and options for that request.
+4. Call `.request(URL)` with your desired API endpoint.
+5. Handle the Promise as you see fit and observe the results.
 
-## Client Credentials
+### Examples
 
-You will need to create a file for storing your client credentials. Typically these secrets would be handled through your server environment, but for basic testing you can create this secrets file to immediately test the library.
+Get an API token from Twitch and prepare to build an IGDB request.
 
-Reminder: DON'T COMMIT SECRETS TO VERSION CONTROL!
+```JavaScript
+// Get an OAuth Access token from Twitch
+const twitchApi = new TwitchApi();
+const apiToken = twitchApi.requestOauthToken(CLIENT_ID, CLIENT_SECRET); // Store these in your environment!
 
-### Twitch Account for Authentication
+// Instantiate our helper and create a builder request
+const igdb = new IGDB_Helper();
+const igdbRequest = igdb.createRequest(CLIENT_ID, apiToken);
+```
 
-IGDB is owned and operated by Twitch.tv. In order to authenticate with the api, you will need an active Twitch account and register a developer application with it to acquire a Client ID and Client Secret. See IGDB's documentation here for details: [IGDB Account Creation](https://api-docs.igdb.com/#account-creation)
+Get 5 genres and sort them by when they were last updated.
 
-### Create Secrets File
+```JavaScript
+igdbRequest
+    .fields("name", "updated_at")
+    .limit(5);
 
-1. Create a `secrets.json` file at the project root.
-2. Add two fields called `clientId` and `clientSecret`.
-3. Set those values to their respective values from your Twitch Developer App.
+const responseData = igdbRequest.request("/genres")
+    .then(
+        /* Handle promise here as desired */
+    );
+```
